@@ -40,3 +40,59 @@
 .read-the-docs {
   color: #888;
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: #ffffff; /* Fondo blanco */
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #4caf50; /* Verde de las pizarras */
+  color: #ffffff; /* Texto blanco */
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  z-index: 1000;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 80px auto 0; /* Altura de la barra de navegación */
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer {
+  background-color: #4caf50; /* Verde de las pizarras */
+  color: #ffffff; /* Texto blanco */
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+h1, h2, h3 {
+  font-family: 'Crayon Crumble', cursive;
+  color: #4caf50; /* Verde de las pizarras */
+}
+
+a {
+  color: #4caf50; /* Verde de las pizarras */
+  text-decoration: none;
+  transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+a:hover {
+  color: #ffeb3b; /* Amarillo transparente en hover */
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+}
