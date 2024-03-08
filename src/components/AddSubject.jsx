@@ -33,11 +33,13 @@ const AddSubject = () => {
 
                 ))}
             </select>
-        </div>
+        </div> <br />
 
         <div>
-            <button>Add Subject</button> <br />
-            <Link to="/"> Back to Dashboard </Link>
+            <a><button>Add Subject</button></a> 
+        </div><br />
+        <div>
+            <Link to="/"> <button>Back to Dashboard</button> </Link>
         </div>
     </>
     );
