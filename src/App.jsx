@@ -19,10 +19,15 @@ function App() {
             <p className="read-the-docs">From teachers to teachers</p>
           </div>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/add-subject/:id" element={<AddSubject />} />
+            <Route path="/dashboard/:id" element={<Dashboard />} />
+            <Route path="/add-subject" element={<AddSubject />} />
           </Routes>
         </div>
+{/*         <div>
+          <Link to="/dashboard/1" >
+            <button>Go to Dashboard</button>
+          </Link>
+        </div> */}
       </>    
   );
 };
