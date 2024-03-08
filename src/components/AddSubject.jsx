@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const AddSubject = () => {
 
     const [subject, setSubject] = useState("");
+    const [classList, setClassList] = useState([]);
     const [selectedClass, setSelectedClass] = useState("");
     const [selectedStudents, setSelectedStudents] = useState([]);
 
-    const classes = ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5"];
+    useEffect(() => {
+
+        const fetchClasses = async () => {
+            const response = await fetch(`http://localhost:8000/classes/all`);
+            const data = await response.json();
+            console.log("🚀 WILSOOOOOOOOOON:where are the classes?", data)
+            setClassList(data.classes);
+            
+        };
+
+        fetchClasses();
+
+    }, []);
+
+    useEffect(() => {
+
+        if(selectedClass.length){
+            
+        };
+
+    }, [selectedClass]);
+
     const students = ["Student 1", "Student 2", "Student 3", "Student 4", "Student 5"];
     
     return (
@@ -18,10 +40,13 @@ const AddSubject = () => {
             <input type="text" value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="Add subject" /> 
             <br /> 
             <select value={selectedClass} onChange={(e) => setSelectedClass(e.target.value)}>
-            
-                {classes.map((c, index) => (
-                    <option key={index} value={c}>{c}</option>
+                <option>Select a class</option>
+                {classList.map((classItem, index) => (
+                    <option key={index} value={classItem._id}>
+                        {classItem.class_name}
+                    </option>
                 ))}
+
             </select>
             <br />
             <select multiple value={selectedStudents} onChange={(e) => setSelectedStudents([...e.target.options]
