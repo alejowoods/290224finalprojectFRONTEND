@@ -1,11 +1,12 @@
-import React from "react";
+import React from 'react';
+import '../css/navbar.css';
 
 const Navbar = () => {
     return (
-        <div>
-            <h2>this is your navbar</h2>
+        <div className="navbar">
+            <h1>Ultimate Classroom Manager</h1>
         </div>
-        );
-    };
+    );
+};
 
 export default Navbar;

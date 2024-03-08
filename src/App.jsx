@@ -9,20 +9,21 @@ import './App.css'
 function App() {
 
   return (   
-    <>
-      {/* <Router> */}
-        <div>
-          <h1>YOU CAN DO IT AND NEVER THINK THE OPPOSITE</h1>
+      <>
+        <Navbar />
+        <div id='content'>  
+          <div id='title'>
+            <h1>YOU CAN DO IT AND NEVER THINK THE OPPOSITE</h1>
+          </div>
+          <div>
+            <p className="read-the-docs">From teachers to teachers</p>
+          </div>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/add-subject/:id" element={<AddSubject />} />
+          </Routes>
         </div>
-        <div>
-          <p className="read-the-docs">From teachers to teachers</p>
-        </div>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/add-subject" element={<AddSubject />} />
-        </Routes>
-      {/* </Router> */}
-    </>    
+      </>    
   );
 };
 

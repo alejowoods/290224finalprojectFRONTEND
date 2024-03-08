@@ -46,6 +46,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
@@ -54,15 +55,25 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.button-delete {
+  background-color: #B8860B ; /* Color amarillo mostaza */
+  color: white; /* Texto negro */
+ }
+
+.button-delete:hover {
+  background-color: #FFDB58; /* Amarillo oscuro al pasar el puntero sobre el botón */
+  color: black;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
   a:hover {
-    color: #747bff;
+    color: white;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #04704F;
   }
 }

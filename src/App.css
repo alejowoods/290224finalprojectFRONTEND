@@ -1,74 +1,55 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   background-color: #ffffff; /* Fondo blanco */
 }
 
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #4caf50; /* Verde de las pizarras */
+button {
+  background-color: #04704F; /* Verde del navbar y footer */
   color: #ffffff; /* Texto blanco */
-  padding: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
-  z-index: 1000;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, border 0.3s ease; /* Transición suave para el color de fondo y el borde */
 }
 
+button:hover {
+  background-color: #04864F; /* Verde un poco más claro en hover */
+  border: 1px solid #ffeb3b; /* Borde amarillo delgado en hover */
+}
 .container {
   max-width: 1280px;
-  margin: 80px auto 0; /* Altura de la barra de navegación */
+  margin: 26vh auto 0; /* Altura de la barra de navegación */
   padding: 2rem;
   text-align: center;
 }
-
+.container button {
+  background-color: #04704F; /* Verde del navbar y footer */
+  color: #ffffff; /* Texto blanco */
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px; /* Bordes redondeados */
+  transition: background-color 0.3s ease, border 0.3s ease; /* Transición suave para el color de fondo y el borde */
+}
 .footer {
-  background-color: #4caf50; /* Verde de las pizarras */
+  background-color: #04704F; /* Verde de las pizarras */
   color: #ffffff; /* Texto blanco */
   padding: 15px;
   position: fixed;
@@ -78,11 +59,11 @@ body {
 
 h1, h2, h3 {
   font-family: 'Crayon Crumble', cursive;
-  color: #4caf50; /* Verde de las pizarras */
+  color: #04704F; /* Verde de las pizarras */
 }
 
 a {
-  color: #4caf50; /* Verde de las pizarras */
+  color: #04704F; /* Verde de las pizarras */
   text-decoration: none;
   transition: color 0.3s ease; /* Transición suave para el color */
 }
@@ -91,8 +72,29 @@ a:hover {
   color: #ffeb3b; /* Amarillo transparente en hover */
 }
 
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-  }
+
+
+#content {
+  max-width: 1280px;
+  margin: 5vh auto 0; /* Reducir el margen superior al 65% de su tamaño original */
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
+#title h1 {
+  font-family: 'Crayon Crumble', cursive;
+}
+
+.read-the-docs {
+  color: #888;
+}
+  
+@media (max-width: 768px) {
+    .container {
+      padding: 1rem;
+    }
+  }
