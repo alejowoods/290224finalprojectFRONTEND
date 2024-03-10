@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard'
 import AddSubject from './components/AddSubject'
 
 import './App.css'
+import Footer from './components/Footer';
 
 function App() {
 
@@ -23,11 +24,7 @@ function App() {
             <Route path="/add-subject" element={<AddSubject />} />
           </Routes>
         </div>
-{/*         <div>
-          <Link to="/dashboard/1" >
-            <button>Go to Dashboard</button>
-          </Link>
-        </div> */}
+        <Footer />
       </>    
   );
 };
