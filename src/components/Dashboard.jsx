@@ -24,7 +24,7 @@ useEffect(() => {
         <>
             <div>
                 <p>Welcome teacher {teacher ? teacher.name : "loading..."}</p>
-                {teacher && teacher.subject_ids.map(((subject, index) => (
+                {teacher && teacher.subject_ids.map(((subject, index) => ( // modify to access the subjects collection and getting the name of the subject. populate the subjects collection with the subjects the teacher is teaching.
                     <p key={index}>{subject}</p>
                 )))}
             </div>
@@ -32,7 +32,7 @@ useEffect(() => {
                 <p>Choose your subject or create one</p>
             </div>
             <div>
-                <Link to="/add-subject"><button>Create your own group (HERE ANOTHER INEGRATION TO GET TEACHER'S CLASSES)</button></Link>
+                <Link to="/add-subject"><button>Create your own subject (HERE ANOTHER INEGRATION TO GET TEACHER'S CLASSES)</button></Link>
             </div> <br />
             <div>
                 <button className="button-delete">delete subject HERE ANOTHER INTEGRATION TO DELETE A CLASS</button>
