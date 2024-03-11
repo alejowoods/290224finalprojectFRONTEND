@@ -5,6 +5,8 @@ import { Link, useParams } from "react-router-dom";
 const Dashboard = () => {
 
 const [teacher, setTeacher] = useState(null);
+
+
 const { id: teacherID} = useParams();
 
 useEffect(() => {
@@ -19,6 +21,8 @@ useEffect(() => {
     fetchTeacher();	
 
 }, []);
+
+
 
     return (
         <>

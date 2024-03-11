@@ -14,6 +14,13 @@ const AddSubject = () => {
 
 
     const handleAddSubject = async () => {
+
+        if(!subject) {
+            alert('Dear teacher, please add a subject');
+            return;
+        };
+
+
         const studentIds = studentsForSubject.map(student => student._id);
         const newSubjectData = { 
             subject_name: subject,  
@@ -58,11 +65,17 @@ const AddSubject = () => {
             const fetchStudents = async () => {
                 const response = await fetch(`http://localhost:8000/classes/students/${selectedClass}`);
                 const data = await response.json();
-                setUnaddedStudents(data.students.students);
-                setStudentsForSubject([]);
-            };
+
+                const newStudents = data.students.students; 
+                const filteredStudents = newStudents.filter(newStudent => 
+                    !studentsForSubject.some(existingStudent => existingStudent._id === newStudent._id));
+
+                setUnaddedStudents(filteredStudents);	
+
+            }; 
+
             fetchStudents();
-        };
+        }; 
 
     }, [selectedClass]);  
 
@@ -75,62 +88,83 @@ const AddSubject = () => {
         setUnaddedStudents([...unaddedStudents, student])
         setStudentsForSubject(studentsForSubject.filter((addedStudent) => addedStudent._id !== student._id))
     }
+
+    const handleClearList = () => {
+        setStudentsForSubject([]);
+        setUnaddedStudents([]);
+        setClassList([]);
+        setSubject("");
+    };
     
     return (
-    <>
+ 
+    <div className="main-container">
+        <div>
+        <Link to="/"> <button>Back to Dashboard</button> </Link> {/**/}
+        </div>
         <div>
             <h2>Add your subject</h2>
-            <div>    
-                <input type="text" 
-                        value={subject} 
-                        onChange={(e) => setSubject(e.target.value)} 
-                        placeholder="Add subject"
-                        className="subject-input" 
-                /> 
-            </div> 
-            <br />
+        <div>
+            <input
+            type="text"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            placeholder="Add subject"
+            className="subject-input"
+            /> 
+        </div>
+        <div>
+            <h2>Select a class</h2>
             <select
-                className="class-dropdown" 
-                value={selectedClass} 
+                className="class-dropdown"
+                value={selectedClass}
                 onChange={(e) => setSelectedClass(e.target.value)}
             >
                 <option>Select a class</option>
-
-                {classList.map((classItem, index) => ( 
-                    <option key={index} value={classItem._id}>
-                        {classItem.class_name}
-                    </option>
+        
+                {classList.map((classItem, index) => (
+                <option key={index} value={classItem._id}>
+                    {classItem.class_name}
+                </option>
                 ))}
-
             </select>
-            <div>
-                {unaddedStudents.map((student) => (
-                    <div key={student._id} className="student-container">
-                        <div className="student-name">{student.name}</div>
-                        <button className="add-button" onClick={() => addStudent(student)} >+</button>
-                    </div>
-                ))}
-            </div> <br />
+            <h2>List of class</h2>
         </div>
-
-        <div>
-            <button onClick={handleAddSubject}>Add Subject</button> 
-        </div> <br />
-        <div>
-
-        {studentsForSubject.map((student) => (
+        <div className="student-list-container">
+            {unaddedStudents.map((student) => (
             <div key={student._id} className="student-container">
-                <div className="student-name" >{student.name}</div> 
-                <button className="remove-button" onClick={() => removeStudent(student)}>-</button>
+                <div className="student-name">{student.name}</div>
+                <button className="add-button" onClick={() => addStudent(student)}>
+                +
+                </button>
             </div>
-        ))}
+            ))}
         </div>
-
-        <div>
-            <Link to="/"> <button>Back to Dashboard</button> </Link>
         </div>
-    </>
-    );
-};
+        {studentsForSubject.length > 0 && (
+        <>
+            <div>
+                <h2>Your students for the subject </h2>
+            </div>
+            <div className="student-list-container">
+            {studentsForSubject.map((student) => (
+                <div key={student._id} className="student-container">
+                <div className="student-name">{student.name}</div>
+                <button
+                    className="remove-button"
+                    onClick={() => removeStudent(student)}
+                >
+                    -
+                </button>
+                </div>
+            ))}
+            </div>
+            <button onClick={handleClearList}>Clear list</button> <br />
+            <button onClick={handleAddSubject}>Add Subject</button>
+        </>
+        )}
+    </div>
 
+    );    
+}
 export default AddSubject;
