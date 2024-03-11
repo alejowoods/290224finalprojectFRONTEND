@@ -19,6 +19,11 @@
     box-shadow: 0 0 0 2px #04864F; /* Añade un contorno al hacer foco en el campo de entrada o el dropdown */
 }
 
+.student-list-container {
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
 .student-container {
     display: flex;
     justify-content: space-between;
@@ -43,6 +48,7 @@
   }
   
   .add-button, .remove-button {
+    flex-shrink: 0;
     border: none;
     border-radius: 50%;
     padding: 0.3em;
