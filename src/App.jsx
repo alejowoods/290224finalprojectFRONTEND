@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 function App() {
 
   return (   
-      <>
+      <div className='app_container'>
         <Navbar />
         <div id='content'>  
           <div id='title'>
@@ -25,7 +25,7 @@ function App() {
           </Routes>
         </div>
         <Footer />
-      </>    
+      </div>    
   );
 };
 

@@ -1,8 +1,8 @@
-.class-dropdown {
-    margin-bottom: 1em; /* Añade un espacio debajo del dropdown */
+/* .dropdown {
+    margin-bottom: 1em; 
 }
 
-.subject-input, .class-dropdown {
+.subject-input, .dropdown {
     width: 100%;
     padding: 0.5em;
     border: none;
@@ -10,21 +10,20 @@
     font-size: 0.9em;
     color: #333;
     background-color: #f2f2f2;
-    appearance: none; /* Elimina el estilo predeterminado del navegador */
-    outline: none; /* Elimina el contorno al hacer clic en el campo de entrada o el dropdown */
-    box-sizing: border-box; /* Asegura que el padding y el border no aumenten el tamaño total del elemento */
+    appearance: none; 
+    outline: none; 
+    box-sizing: border-box; 
 }
 
-.subject-input:focus, .class-dropdown:focus {
-    box-shadow: 0 0 0 2px #04864F; /* Añade un contorno al hacer foco en el campo de entrada o el dropdown */
-}
+.subject-input:focus, .dropdown:focus {
+    box-shadow: 0 0 0 2px #04864F;
+} */
+/* 
+.main-container {
+    width: 70%;
+} */
 
-.student-list-container {
-    max-height: 50vh;
-    overflow-y: auto;
-}
-
-.student-container {
+/* .student-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,9 +32,9 @@
     padding: 0.20em 0.5em;
     margin-bottom: 0.5em;
     box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
-}
+} */
 
-.student-container:hover {
+/* .student-container:hover {
     border: 2px solid #04864F;
 }
 
@@ -45,9 +44,9 @@
     white-space: nowrap;
     max-width: 200px; 
     margin-right: 1em;
-  }
-  
-  .add-button, .remove-button {
+}
+
+.add-button, .remove-button {
     flex-shrink: 0;
     border: none;
     border-radius: 50%;
@@ -59,9 +58,8 @@
     color: #fff;
     cursor: pointer;
     transition: background-color 0.25s;
-  }
-  
-  .add-button:hover {
+}
+
+.add-button:hover {
     background-color: #04864F;
-  }
-  
+} */
