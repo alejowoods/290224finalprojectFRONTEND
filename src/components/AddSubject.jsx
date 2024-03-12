@@ -12,7 +12,9 @@ const AddSubject = () => {
     const [studentsForSubject, setStudentsForSubject] = useState([]);
     const [unaddedStudents, setUnaddedStudents] = useState([]);
     const [teacherID, setTeacherID] = useState('65ddfe1a802f34faa8ea1fb6'); 
+    const [messageConfirm, setMessageConfirm] = useState("");
 
+    const [showMessage, setShowMessage] = useState(false);
 
     const handleAddSubject = async () => {
 
@@ -20,7 +22,6 @@ const AddSubject = () => {
             alert('Dear teacher, please add a subject');
             return;
         };
-
 
         const studentIds = studentsForSubject.map(student => student._id);
         const newSubjectData = { 
@@ -30,7 +31,19 @@ const AddSubject = () => {
             student_ids: studentIds
         };
         
+
         try {
+
+            const subjectList = await fetch(`http://localhost:8000/subjects/get-subjects/${teacherID}`);
+            const subjectListData = await subjectList.json();
+            console.log("🚀 ~ WHERE AM I AND WHAT AM Iß:", subjectListData)
+
+            const subjectExists = subjectListData.subjects.some(subjectData => subjectData.subject_name === subject);
+            if (subjectExists) {
+                console.log('Teacher, this subject already exists. Try again!');
+                return;
+            }
+
             const response = await fetch('http://localhost:8000/subjects/add', {
                 method: 'POST',
                 headers:{
@@ -38,13 +51,28 @@ const AddSubject = () => {
                 },
                 body: JSON.stringify(newSubjectData)
             });
+
             const data = await response.json();
             console.log('ARE YOU ALIVE; MATE?', data);
+            if (data.success) {
+                setMessageConfirm(`Subject ${subject} created successfully. You can see it on the dashboard.`);
+                setShowMessage(true);
+            }
+
         } catch (error) {
             console.error('WE LOST HIM, DOCTOR! Error:', error);            
         }
         
     };
+
+    useEffect(() => {
+        if (showMessage) {
+            setSubject("");
+            setStudentsForSubject([]);
+            setSelectedClass("");
+        }
+    }, [showMessage]);
+
     useEffect(() => {
 
         try {
@@ -100,9 +128,13 @@ const AddSubject = () => {
     return (
 
     <div className="main-container">
+        
         <div>
             <button onClick={() => Navigate(-1)}>Back to Dashboard</button>
         </div>
+        {showMessage && <div>
+            <h3>{messageConfirm}</h3>
+        </div>}
         <div>
             <h2>Add your subject</h2>
         <div>
