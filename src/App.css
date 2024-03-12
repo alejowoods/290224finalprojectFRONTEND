@@ -6,12 +6,12 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
-  background-color: #ffffff; /* Fondo blanco */
+  background-color: #ffffff; 
 }
 
 button {
-  background-color: #04704F; /* Verde del navbar y footer */
-  color: #ffffff; /* Texto blanco */
+  background-color: #04704F; 
+  color: #ffffff; 
   border: none;
   padding: 10px 20px;
   text-align: center;
@@ -20,8 +20,9 @@ button {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 12px; /* Bordes redondeados */
-  transition: background-color 0.3s ease, border 0.3s ease; /* Transición suave para el color de fondo y el borde */
+  border-radius: 12px; 
+  transition: background-color 0.3s ease, border 0.3s ease; 
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
@@ -48,14 +49,14 @@ button:hover {
   border-radius: 12px; /* Bordes redondeados */
   transition: background-color 0.3s ease, border 0.3s ease; /* Transición suave para el color de fondo y el borde */
 }
-.footer {
-  background-color: #04704F; /* Verde de las pizarras */
-  color: #ffffff; /* Texto blanco */
+/* .footer {
+  background-color: #04704F; 
+  color: #ffffff; 
   padding: 15px;
   position: fixed;
   bottom: 0;
   width: 100%;
-}
+} */
 
 h1, h2, h3 {
   font-family: 'Crayon Crumble', cursive;
@@ -97,4 +98,15 @@ a:hover {
     .container {
       padding: 1rem;
     }
+  }
+
+
+  .app_container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  #content{
+    flex: 1;
   }

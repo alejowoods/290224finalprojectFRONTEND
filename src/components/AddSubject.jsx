@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import '../css/addSubject.css';
 
 const AddSubject = () => {
+    const Navigate = useNavigate();
 
     const [subject, setSubject] = useState("");
     const [classList, setClassList] = useState([]);
@@ -97,10 +98,10 @@ const AddSubject = () => {
     };
     
     return (
- 
+
     <div className="main-container">
         <div>
-        <Link to="/"> <button>Back to Dashboard</button> </Link> {/**/}
+            <button onClick={() => Navigate(-1)}>Back to Dashboard</button>
         </div>
         <div>
             <h2>Add your subject</h2>
@@ -116,7 +117,7 @@ const AddSubject = () => {
         <div>
             <h2>Select a class</h2>
             <select
-                className="class-dropdown"
+                className="dropdown"
                 value={selectedClass}
                 onChange={(e) => setSelectedClass(e.target.value)}
             >
@@ -128,39 +129,42 @@ const AddSubject = () => {
                 </option>
                 ))}
             </select>
-            <h2>List of class</h2>
+            
         </div>
+        
+        {unaddedStudents.length > 0 && (
         <div className="student-list-container">
+    
+        <h2>List of class</h2>
             {unaddedStudents.map((student) => (
             <div key={student._id} className="student-container">
                 <div className="student-name">{student.name}</div>
                 <button className="add-button" onClick={() => addStudent(student)}>
                 +
                 </button>
-            </div>
-            ))}
+                </div>
+                ))}
+        
         </div>
+        )}
         </div>
         {studentsForSubject.length > 0 && (
         <>
             <div>
-                <h2>Your students for the subject </h2>
+                <h2>Your students for {subject} </h2>
             </div>
             <div className="student-list-container">
             {studentsForSubject.map((student) => (
                 <div key={student._id} className="student-container">
-                <div className="student-name">{student.name}</div>
-                <button
-                    className="remove-button"
-                    onClick={() => removeStudent(student)}
-                >
-                    -
-                </button>
+                    <div className="student-name">{student.name}</div>
+                    <button className="remove-button" onClick={() => removeStudent(student)}>
+                        -
+                    </button>
                 </div>
             ))}
             </div>
-            <button onClick={handleClearList}>Clear list</button> <br />
-            <button onClick={handleAddSubject}>Add Subject</button>
+            <div><button className="button-delete" onClick={handleClearList}>Reset form</button> </div> <br />
+            <div><button onClick={handleAddSubject}>Create subject {subject}</button></div>
         </>
         )}
     </div>

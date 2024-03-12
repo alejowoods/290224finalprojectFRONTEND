@@ -38,8 +38,29 @@ h1 {
   line-height: 1.1;
 }
 
+.dropdown {
+  margin-bottom: 1em; 
+}
+
+.subject-input, .dropdown {
+  width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.9em;
+  color: #333;
+  background-color: #f2f2f2;
+  appearance: none; 
+  outline: none; 
+  box-sizing: border-box; 
+}
+
+.subject-input:focus, .dropdown:focus {
+  box-shadow: 0 0 0 2px #04864F;
+}
+
 button {
-  border-radius: 8px;
+  border-radius: 20px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -59,15 +80,77 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.main-container {
+  width: 70%;
+}
+
+.student-container {
+  display: flex;
+  color: #04704F;
+  font-family: 'Crayon Crumble', cursive;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #faf8cf; 
+  border-radius: 20px;
+  padding: 0.20em 0.5em;
+  margin-bottom: 0.5em;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+}
 .button-delete {
-  background-color: #B8860B ; /* Color amarillo mostaza */
-  color: white; /* Texto negro */
- }
+  background-color: #B8860B ; 
+  color: white; 
+  border-radius: 20px;
+
+}
 
 .button-delete:hover {
-  background-color: #FFDB58; /* Amarillo oscuro al pasar el puntero sobre el botón */
+  background-color: #FFDB58; 
   color: black;
+  border-radius: 20px;
 }
+
+.student-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #faf8cf; 
+  border-radius: 20px;
+  padding: 0.30em 0.5em;
+  margin-bottom: 1em;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+}
+
+.student-container:hover {
+  border-color: #04864F;
+}
+
+.student-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 200px; 
+  margin-right: 1em;
+}
+
+.add-button, .remove-button {
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  padding: 0.3em;
+  width: 30px;
+  height: 30px;
+  font-size: 1em;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s;
+}
+
+.add-button:hover {
+  background-color: #04864F;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -80,4 +163,8 @@ button:focus-visible {
   button {
     background-color: #04704F;
   }
+}
+
+#root {
+  width: 100%;
 }
