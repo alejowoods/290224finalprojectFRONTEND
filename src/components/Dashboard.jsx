@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "../css/dashboard.css"
 
 
 const Dashboard = () => {
+    const navigate = useNavigate();
 
 const [teacher, setTeacher] = useState(null);
 const [subjects, setSubjects] = useState([]);
@@ -61,6 +62,8 @@ const deleteSubject = async (subjectID) => {
                 setMessage(`Subject ${subjectToDelete.subject_name} deleted successfully`);
             }
 
+
+
         } catch (error) {
             console.error(`Error deleting subject ${subjectToDelete.subject_name}:`, error);
             setMessage('Error deleting subject');
@@ -68,17 +71,27 @@ const deleteSubject = async (subjectID) => {
     }
 };
 
+useEffect(() => {
+    let timer;
+    if (message) {
+        timer = setTimeout(() => {
+            setMessage(null);
+        }, 10000); 
+    }
+
+    return () => clearTimeout(timer); 
+}, [message]);
+
     return (
         <div className="main-container">
             <div>
                 <h2>Welcome teacher {teacher ? teacher.name : "loading..."}</h2>
-                
             </div>
             <div>
                 <h2>Choose your subject or create one</h2>
             </div>
             <div>
-                {message && <p>{message}</p>}
+                {message && <h4 className="successful-request">{message}</h4>}
             </div>
             <div>
                 {subjects.map(subject => (
@@ -86,16 +99,16 @@ const deleteSubject = async (subjectID) => {
                         <div className="student-name" >
                             <div>{subject.subject_name}</div>
                         </div>
-                        <button className="remove-button" onClick={() => deleteSubject(subject._id)}>-</button>
+                        <div className="button-container">
+                            <button className="to-manager" onClick={() => navigate(`/manager/${subject._id}`)}>To manager</button>
+                            <button className="remove-button" onClick={() => deleteSubject(subject._id)}>-</button>
+                        </div>
                     </div>
                 ))}
             </div>
             <div>
                 <h2>You did not find your subject? Then... </h2>
-                <Link to="/add-subject"><button>Create subject</button></Link>
-            </div> <br />
-            <div>
-                <button className="button-delete">delete subject (HERE ANOTHER INTEGRATION TO DELETE A CLASS)</button>
+                <button onClick={() => navigate("/add-subject")}>Create subject</button>
             </div>
         </div>
     );
