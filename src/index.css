@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/chalkduster');
+
 
 :root {
   font-family: 'Open Sans', sans-serif;
@@ -12,6 +14,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.navbar img {
+  max-width: 100%;
+  height: 2rem;
 }
 
 a {
@@ -42,8 +49,22 @@ h1 {
   margin-bottom: 1em; 
 }
 
-.subject-input, .dropdown {
+.subject-input, .dropdown, .warning-input {
   width: 100%;
+  padding: 0.5em;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.9em;
+  color: #333;
+  background-color: #f2f2f2;
+  appearance: none; 
+  outline: none; 
+  box-sizing: border-box; 
+}
+
+.warning-input {
+  width: 100%;
+  height: 7em;
   padding: 0.5em;
   border: none;
   border-radius: 20px;
@@ -82,6 +103,21 @@ button:focus-visible {
 
 .main-container {
   width: 70%;
+
+}
+
+.manager-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  button {
+    margin-top: 1em;
+  }
+  input {
+    border-radius: 10px;
+    padding: .5rem;
+  }
 }
 
 .student-container {
@@ -121,7 +157,31 @@ button:focus-visible {
   border: 2px solid transparent;
 }
 
-.student-container:hover {
+.warning-container {
+  display: flex;
+  color: #04704F;
+  font-family: 'Crayon Crumble', cursive;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #faf8cf; 
+  border-radius: 20px;
+  padding: 0.30em 0.5em;
+  margin-bottom: 1em;
+  box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  flex-grow: 1em;
+}
+
+.list {
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+  padding-left: 2em;
+  color: #04704F;
+  font-family: 'Crayon Crumble', cursive;
+}
+.student-container:hover, .warning-container:hover {
   border-color: #04864F;
 }
 
@@ -129,6 +189,14 @@ button:focus-visible {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 200px; 
+  margin-right: 1em;
+}
+
+.warning-comment {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
   max-width: 200px; 
   margin-right: 1em;
 }
@@ -151,6 +219,124 @@ button:focus-visible {
   background-color: #04864F;
 }
 
+.button-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-container-comment {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.remove-button-comment {
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  padding: 0.3em;
+  width: 30px;
+  height: 30px;
+  font-size: 1em;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s;
+  align-self: center;
+}
+
+.warnings {
+  color: #009819;
+  text-align: left;
+  font-size: 0.8em;
+  margin-top: 1em;
+  li {
+    margin-bottom: 0.5em;
+  }
+}
+
+.contact-parents {
+  border: 3px solid #FFDB58; 
+  background-color: white;
+  color: green;
+  border-radius: 15px; 
+  font-family: crayon-crumble, cursive;
+  padding: 10px; 
+  margin: 10px 0; 
+}
+
+.parents-meeting {
+  border: 3px solid red;
+  background-color: white;
+  color: red;
+  border-radius: 15px; 
+  font-family: crayon-crumble, cursive;
+  padding: 10px; 
+  margin: 10px 0; 
+}
+
+.home-container {
+  position: relative;
+}
+
+.home-image {
+  padding: 20px;
+  color: white; 
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: auto;
+  min-height: 300px; 
+  max-width: 100%;
+}
+
+
+.home-image > div {
+  color: white; 
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 70%; 
+}
+
+.home-image > div p {
+  font-family: 'Chalkduster', cursive;
+  font-size: 1em;
+  background: whitesmoke;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+button {
+  margin-top: 20px;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgb(179, 20, 20), 0 0 10px rgb(179, 20, 20); }
+  100% { box-shadow: 0 0 10px rgb(179, 20, 20), 0 0 20px rgb(179, 20, 20); }
+}
+
+.successful-request {
+  color: rgb(179, 20, 20);
+  animation: fadeIn 1s ease-out, glow 5s ease-out, fadeOut 3s ease-in 7s forwards;
+  display: inline-block;
+  border-radius: 10px;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -164,6 +350,26 @@ button:focus-visible {
     background-color: #04704F;
   }
 }
+
+@media (max-width: 858px) {
+  .home-image > div p {
+    color: black;
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+  }
+
+  .home-image > div img {
+    display: block;
+  }
+
+  .home-image > div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+
 
 #root {
   width: 100%;

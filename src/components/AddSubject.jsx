@@ -6,14 +6,13 @@ import '../css/addSubject.css';
 const AddSubject = () => {
     const Navigate = useNavigate();
 
+    const [teacherID, setTeacherID] = useState('65ddfe1a802f34faa8ea1fb6'); 
     const [subject, setSubject] = useState("");
     const [classList, setClassList] = useState([]);
     const [selectedClass, setSelectedClass] = useState("");
     const [studentsForSubject, setStudentsForSubject] = useState([]);
     const [unaddedStudents, setUnaddedStudents] = useState([]);
-    const [teacherID, setTeacherID] = useState('65ddfe1a802f34faa8ea1fb6'); 
     const [messageConfirm, setMessageConfirm] = useState("");
-
     const [showMessage, setShowMessage] = useState(false);
 
     const handleAddSubject = async () => {
@@ -30,8 +29,7 @@ const AddSubject = () => {
             class_id: selectedClass, 
             student_ids: studentIds
         };
-        
-
+                
         try {
 
             const subjectList = await fetch(`http://localhost:8000/subjects/get-subjects/${teacherID}`);
@@ -54,13 +52,20 @@ const AddSubject = () => {
 
             const data = await response.json();
             console.log('ARE YOU ALIVE; MATE?', data);
-            if (data.success) {
+            if (data) {
                 setMessageConfirm(`Subject ${subject} created successfully. You can see it on the dashboard.`);
                 setShowMessage(true);
             }
 
         } catch (error) {
-            console.error('WE LOST HIM, DOCTOR! Error:', error);            
+            console.error('WE LOST HIM, DOCTOR! Error:', error);
+                setMessageConfirm(`Error.`);
+                setShowMessage(true);        
+        } finally {
+            setTimeout(() => {
+                setMessageConfirm("");
+                setShowMessage(false)
+            }, 5000);
         }
         
     };
@@ -133,7 +138,7 @@ const AddSubject = () => {
             <button onClick={() => Navigate(-1)}>Back to Dashboard</button>
         </div>
         {showMessage && <div>
-            <h3>{messageConfirm}</h3>
+            <h4 className="successful-request">{messageConfirm}</h4>
         </div>}
         <div>
             <h2>Add your subject</h2>
